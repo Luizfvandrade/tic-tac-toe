@@ -22,6 +22,10 @@ class Tabuleiro extends React.Component {
   handleClick(i) {
     const quadrados = this.state.squares.slice();
 
+    if(calculateWinner(quadrados) || quadrados[i]) {
+      return
+    }
+
     quadrados[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({ 
       squares: quadrados,
